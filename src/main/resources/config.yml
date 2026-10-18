@@ -1,0 +1,62 @@
+# =====================================================================
+#             VILLAGER TRADE OVERHAUL & ENCHANT REMOVER
+# =====================================================================
+
+# Global Feature Toggles (True/False boolean statements)
+
+# When false (default), villager trades retain their regular emerald pricing.
+# When true, all item buy trades from villagers cost strictly 1 Emerald.
+one-emerald-trade: false
+
+# When true, Librarian Enchanted Book trades cost ONLY emeralds and
+# NO REGULAR BOOK is required (the normal book ingredient is removed).
+librarian-enchanted-books-no-book: true
+
+# For trades where the villager BUYS items from the player for emeralds:
+# When true, changes required input quantity to 1 (e.g. 1 stick -> 1 emerald).
+sell-trades-one-item: true
+
+# When true, locks the price to 1 permanently by disabling price multipliers,
+# demand shifts, and reputation penalties.
+lock-price-to-one: false
+
+
+# Stage 1 Trade Reset / Reroll System
+# Direct Villager UI Flow:
+# Open villager UI -> check trades -> don't like -> click 3rd Barrier button -> trades reset with anvil sound!
+reset:
+  enabled: true
+  require-stage-one-only: true
+
+  # The 3rd button inside the villager trade menu with a BARRIER icon
+  # Clicking this trade resets the villager's trades with an anvil sound
+  barrier-button:
+    item-name: "&c&l[ ↻ Reset Trades ]"
+    item-lore:
+      - "&7Click to instantly reroll trades!"
+      - "&7Stage 1 (Novice) only."
+      - "&aNo workstation breaking needed."
+      - "&e▶ Click to reset trades!"
+
+  effects:
+    play-sound: true
+    spawn-particles: true
+
+# Enchantment Remover System (/remove-enchant or /re)
+# Opens an Anvil UI where player places an item in slot 0, types the unwanted enchantment name
+# in the rename box, and takes the resulting item with that enchantment stripped.
+enchant-remover:
+  enabled: true
+  cost-levels: 0
+  play-sound: true
+  preserve-original-name: true
+
+messages:
+  prefix: "&8[&aVillagers&8] "
+  reset-success: "&a✔ Trades successfully reset!"
+  already-locked: "&c✖ This villager's trades are locked (XP > 0) and cannot be reset."
+  no-profession: "&c✖ This villager has no profession."
+  enchant-remover-open: "&ePut your item in the left slot and type the enchantment you want to remove in the name box!"
+  enchant-removed-success: "&a✔ Successfully removed &e{enchant}&a!"
+  reloaded: "&aConfiguration reloaded successfully."
+  no-permission: "&cYou do not have permission to execute this command."

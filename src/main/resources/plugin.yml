@@ -1,0 +1,29 @@
+name: VillagerTradeOverhaul
+version: 1.21.11
+main: com.riot.villagertrades.VillagerTradePlugin
+api-version: '1.20'
+author: RIOT
+description: Makes all villager trades 1 emerald, librarian enchantment books require no normal book, adds stage-1 trade reset button menu, and anvil-based enchant remover.
+
+commands:
+  villagertrades:
+    description: Main command for VillagerTradeOverhaul
+    aliases: [vt, villagertrade, tradeoverhaul]
+    permission: villagertrades.admin
+    usage: /villagertrades [reload]
+  remove-enchant:
+    description: Opens the Anvil UI to remove a typed enchantment from an item
+    aliases: [re, removeenchant, disenchant]
+    permission: villagertrades.enchantremover
+    usage: /remove-enchant
+
+permissions:
+  villagertrades.admin:
+    description: Allows reloading plugin configuration
+    default: op
+  villagertrades.use:
+    description: Allows players to use the trade reset menu and features
+    default: true
+  villagertrades.enchantremover:
+    description: Allows players to use the /remove-enchant and /re command
+    default: true
